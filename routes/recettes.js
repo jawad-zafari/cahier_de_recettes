@@ -37,6 +37,23 @@ router.get('/:id', async (req, res) => {
     }
 });
 
+// Route pour modifier une recette
+router.patch('/:id', async (req, res) => {
+    try {
+        const recetteMiseAJour = await Recette.findByIdAndUpdate(
+            req.params.id,
+            req.body,
+            { new: true } // Pour renvoyer la nouvelle version
+        );
+        if (!recetteMiseAJour) {
+            return res.status(404).json({ message: 'Recette non trouvée' });
+        }
+        res.json(recetteMiseAJour);
+    } catch (erreur) {
+        res.status(400).json({ message: erreur.message });
+    }
+});
+
 
 
 
