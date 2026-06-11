@@ -4,6 +4,7 @@ const recettesRoutes = require('./routes/recettes');
 // Importation des outils pour la documentation Swagger
 const swaggerUi = require('swagger-ui-express');
 const YAML = require('yamljs');
+const utilisateursRoutes = require('./routes/utilisateurs');
 
 const app = express();
 const PORT = 3000;
