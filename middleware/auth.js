@@ -13,6 +13,9 @@ module.exports = (req, res, next) => {
         // Séparer le mot "Bearer" du vrai token
         const token = enTeteAuth.split(' ')[1];
         
+        // Vérifier si le token est valide
+        const tokenDecode = jwt.verify(token, CLE_SECRETE);
+        
         } catch (erreur) {
     }
 };
