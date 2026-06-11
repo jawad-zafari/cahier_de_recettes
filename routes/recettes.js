@@ -13,7 +13,7 @@ router.post('/', async (req, res) => {
     }
 });
 
-// Route pour lire toutes les recettes avec filtrage optionnel
+// Route pour lire toutes les recettes avec filtrage et tri
 router.get('/', async (req, res) => {
     try {
         const filtre = {};
@@ -26,7 +26,9 @@ router.get('/', async (req, res) => {
             filtre.ingredients = req.query.ingredient;
         }
 
-        const recettes = await Recette.find(filtre);
+        // Récupération des recettes avec filtre et tri par date (les plus récentes en premier)
+        const recettes = await Recette.find(filtre).sort({ date: -1 });
+        
         res.json(recettes);
     } catch (erreur) {
         res.status(500).json({ message: erreur.message });
