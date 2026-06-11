@@ -13,3 +13,12 @@ router.post('/', async (req, res) => {
     }
 });
 
+// Route pour lire toutes les recettes
+router.get('/', async (req, res) => {
+    try {
+        const recettes = await Recette.find();
+        res.json(recettes);
+    } catch (erreur) {
+        res.status(500).json({ message: erreur.message });
+    }
+});
