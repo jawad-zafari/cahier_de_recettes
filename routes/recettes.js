@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Recette = require('../models/Recette');
+const auth = require('../middleware/auth');
 
 // Route pour ajouter une nouvelle recette
 router.post('/', async (req, res) => {
