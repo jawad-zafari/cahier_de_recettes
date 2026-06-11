@@ -54,7 +54,18 @@ router.patch('/:id', async (req, res) => {
     }
 });
 
-
+// Route pour supprimer une recette
+router.delete('/:id', async (req, res) => {
+    try {
+        const recetteSupprimee = await Recette.findByIdAndDelete(req.params.id);
+        if (!recetteSupprimee) {
+            return res.status(404).json({ message: 'Recette non trouvée' });
+        }
+        res.json({ message: 'Recette supprimée avec succès !' });
+    } catch (erreur) {
+        res.status(500).json({ message: erreur.message });
+    }
+});
 
 
 module.exports = router;
