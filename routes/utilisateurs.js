@@ -38,7 +38,14 @@ router.post('/inscription', async (req, res) => {
 // Route pour la connexion
 router.post('/connexion', async (req, res) => {
     try {
+        // Trouver l'utilisateur par son email
+        const utilisateur = await Utilisateur.findOne({ email: req.body.email });
+        if (!utilisateur) {
+            return res.status(400).json({ message: 'Email ou mot de passe incorrect.' });
+        }
+
         } catch (erreur) {
+        res.status(500).json({ message: erreur.message });
     }
 });
 
