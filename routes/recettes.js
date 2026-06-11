@@ -23,4 +23,21 @@ router.get('/', async (req, res) => {
     }
 });
 
+
+// Route pour lire une recette spécifique par son ID
+router.get('/:id', async (req, res) => {
+    try {
+        const recette = await Recette.findById(req.params.id);
+        if (!recette) {
+            return res.status(404).json({ message: 'Recette non trouvée' });
+        }
+        res.json(recette);
+    } catch (erreur) {
+        res.status(500).json({ message: erreur.message });
+    }
+});
+
+
+
+
 module.exports = router;
