@@ -35,3 +35,11 @@ router.post('/inscription', async (req, res) => {
     }
 });
 
+// Route pour la connexion
+router.post('/connexion', async (req, res) => {
+    try {
+        } catch (erreur) {
+    }
+});
+
+module.exports = router;
