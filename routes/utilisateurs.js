@@ -10,7 +10,14 @@ const CLE_SECRETE = 'ma_cle_super_secrete_123';
 // Route pour l'inscription d'un nouvel utilisateur
 router.post('/inscription', async (req, res) => {
     try {
+        // Vérifier si l'utilisateur existe déjà
+        const utilisateurExistant = await Utilisateur.findOne({ email: req.body.email });
+        if (utilisateurExistant) {
+            return res.status(400).json({ message: 'Cet email est déjà utilisé.' });
+        }
+
        } catch (erreur) {
+        res.status(500).json({ message: erreur.message });
     }
 });
 
