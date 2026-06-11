@@ -17,6 +17,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use(express.json());
 
 app.use('/recettes', recettesRoutes);
+// Utilisation des routes utilisateurs
 app.use('/utilisateurs', utilisateursRoutes);
 
 // URL de connexion à la base de données locale
