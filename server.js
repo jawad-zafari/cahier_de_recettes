@@ -1,13 +1,29 @@
 const express = require('express');
+const mongoose = require('mongoose');
 
 const app = express();
-
 const PORT = 3000;
 
+app.use(express.json());
+
+// URL de connexion à la base de données locale
+const dbURL = 'mongodb://127.0.0.1:27017/cahier_de_recettes';
+
+const connectDB = async () => {
+    try {
+        await mongoose.connect(dbURL);
+        console.log('Connecté à la base de données MongoDB avec succès !');
+    } catch (erreur) {
+        console.log('Erreur de connexion :', erreur);
+    }
+};
+
+connectDB();
+
 app.get('/', (req, res) => {
-    res.send('Bonjour! Le serveur a démarré avec succès.');
+    res.send('Le serveur fonctionne parfaitement !');
 });
 
 app.listen(PORT, () => {
-    console.log("Le serveur fonctionne sur le port : 3000");
+    console.log('Serveur en écoute sur le port 3000');
 });
