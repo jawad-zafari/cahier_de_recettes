@@ -10,6 +10,9 @@ module.exports = (req, res, next) => {
             return res.status(401).json({ message: 'Accès refusé. Veuillez vous connecter.' });
         }
 
+        // Séparer le mot "Bearer" du vrai token
+        const token = enTeteAuth.split(' ')[1];
+        
         } catch (erreur) {
     }
 };
