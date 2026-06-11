@@ -13,10 +13,20 @@ router.post('/', async (req, res) => {
     }
 });
 
-// Route pour lire toutes les recettes
+// Route pour lire toutes les recettes avec filtrage optionnel
 router.get('/', async (req, res) => {
     try {
-        const recettes = await Recette.find();
+        const filtre = {};
+
+        if (req.query.auteur) {
+            filtre.auteur = req.query.auteur;
+        }
+
+        if (req.query.ingredient) {
+            filtre.ingredients = req.query.ingredient;
+        }
+
+        const recettes = await Recette.find(filtre);
         res.json(recettes);
     } catch (erreur) {
         res.status(500).json({ message: erreur.message });
