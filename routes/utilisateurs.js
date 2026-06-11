@@ -50,7 +50,11 @@ router.post('/connexion', async (req, res) => {
             return res.status(400).json({ message: 'Email ou mot de passe incorrect.' });
         }
 
-        } catch (erreur) {
+        // Créer le token (clé numérique)
+        const token = jwt.sign({ id: utilisateur._id }, CLE_SECRETE, { expiresIn: '1h' });
+
+        res.json({ token: token, message: 'Connexion réussie !' });
+    } catch (erreur) {
         res.status(500).json({ message: erreur.message });
     }
 });
