@@ -4,7 +4,7 @@ const Recette = require('../models/Recette');
 const auth = require('../middleware/auth');
 
 // Route pour ajouter une nouvelle recette
-router.post('/', async (req, res) => {
+router.post('/', auth, async (req, res) => {
     try {
         const nouvelleRecette = new Recette(req.body);
         const recetteSauvegardee = await nouvelleRecette.save();
