@@ -20,7 +20,9 @@
   },
   "homepage": "https://github.com/jawad-zafari/cahier_de_recettes#readme",
   "dependencies": {
+    "bcrypt": "^6.0.0",
     "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
     "mongoose": "^9.7.0",
     "nodemon": "^3.1.14",
     "swagger-ui-express": "^5.0.1",
