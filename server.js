@@ -7,6 +7,12 @@ const YAML = require('yamljs');
 
 const app = express();
 const PORT = 3000;
+
+// Lecture du fichier YAML pour la documentation Swagger
+const swaggerDocument = YAML.load('./swagger.yaml');
+// Mise en place de la route pour la documentation Swagger
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
 app.use(express.json());
 
 app.use('/recettes', recettesRoutes);
