@@ -18,6 +18,14 @@ const recetteSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    commentaires: [{
+        texte: String,
+        auteur: String,
+        date: {
+            type: Date,
+            default: Date.now
+        }
+    }],
     date: {
         type: Date,
         default: Date.now
