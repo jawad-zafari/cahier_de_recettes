@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 const Utilisateur = require('../models/Utilisateur');
 
 // Clé secrète pour le token (à garder secrète dans un vrai projet)
-const CLE_SECRETE = 'ma_cle_super_secrete_123';
+const CLE_SECRETE = process.env.CLE_SECRETE;
 
 // Route pour l'inscription d'un nouvel utilisateur
 router.post('/inscription', async (req, res) => {
