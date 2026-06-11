@@ -19,8 +19,8 @@ module.exports = (req, res, next) => {
         // Ajouter les informations de l'utilisateur à la requête
         req.utilisateur = tokenDecode;
         
-        // Passer à la suite (la route demandée)
         next();
     } catch (erreur) {
+        res.status(401).json({ message: 'Token invalide ou expiré.' });
     }
 };
