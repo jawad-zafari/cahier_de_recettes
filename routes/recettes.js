@@ -68,4 +68,25 @@ router.delete('/:id', async (req, res) => {
 });
 
 
+// Route pour ajouter un commentaire à une recette spécifique
+router.post('/:id/commentaires', async (req, res) => {
+    try {
+        const recette = await Recette.findById(req.params.id);
+        
+        if (!recette) {
+            return res.status(404).json({ message: 'Recette non trouvée' });
+        }
+        
+        // Ajouter le nouveau commentaire à la liste
+        recette.commentaires.push(req.body);
+        
+        // Sauvegarder la recette mise à jour
+        const recetteMiseAJour = await recette.save();
+        
+        res.status(201).json(recetteMiseAJour);
+    } catch (erreur) {
+        res.status(400).json({ message: erreur.message });
+    }
+});
+
 module.exports = router;
