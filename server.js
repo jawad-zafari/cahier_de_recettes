@@ -7,6 +7,8 @@ const PORT = 3000;
 
 app.use(express.json());
 
+app.use('/recettes', recettesRoutes);
+
 // URL de connexion à la base de données locale
 const dbURL = 'mongodb://127.0.0.1:27017/cahier_de_recettes';
 
