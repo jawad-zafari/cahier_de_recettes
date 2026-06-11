@@ -22,7 +22,7 @@ app.use('/recettes', recettesRoutes);
 app.use('/utilisateurs', utilisateursRoutes);
 
 // URL de connexion à la base de données locale
-const dbURL = 'mongodb://127.0.0.1:27017/cahier_de_recettes';
+const dbURL = process.env.MONGODB_URI;
 
 const connectDB = async () => {
     try {
