@@ -16,7 +16,11 @@ router.post('/inscription', async (req, res) => {
             return res.status(400).json({ message: 'Cet email est déjà utilisé.' });
         }
 
-       } catch (erreur) {
+        // Crypter le mot de passe
+        const salt = await bcrypt.genSalt(10);
+        const motDePasseCrypte = await bcrypt.hash(req.body.motDePasse, salt);
+
+        } catch (erreur) {
         res.status(500).json({ message: erreur.message });
     }
 });
