@@ -16,6 +16,10 @@ module.exports = (req, res, next) => {
         // Vérifier si le token est valide
         const tokenDecode = jwt.verify(token, CLE_SECRETE);
         
-        } catch (erreur) {
+        // Ajouter les informations de l'utilisateur à la requête
+        req.utilisateur = tokenDecode;
+        
+        
+    } catch (erreur) {
     }
 };
