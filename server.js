@@ -36,11 +36,13 @@ const connectDB = async () => {
 
 connectDB();
 
+// app.get('/', (req, res) => {
+//     res.send('Le serveur fonctionne parfaitement !');
+// });
+
 app.get('/', (req, res) => {
-    res.send('Le serveur fonctionne parfaitement !');
+    res.redirect('/api-docs');
 });
-
-
 
 app.listen(PORT, HOST, () => {
     console.log("Le serveur fonctionne !");
