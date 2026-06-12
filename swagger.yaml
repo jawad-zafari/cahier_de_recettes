@@ -28,4 +28,9 @@ paths:
                   type: string
                 motDePasse:
                   type: string
-      
+      responses:
+        '201':
+          description: Utilisateur créé avec succès
+        '400':
+          description: Cet email est déjà utilisé ou informations invalides
+  
