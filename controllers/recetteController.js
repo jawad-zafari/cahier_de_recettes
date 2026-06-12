@@ -30,3 +30,16 @@ exports.obtenirRecettes = async (req, res) => {
     }
 };
 
+// Récupérer une recette spécifique par son ID
+exports.obtenirRecetteParId = async (req, res) => {
+    try {
+        const recette = await Recette.findById(req.params.id);
+        if (!recette) {
+            return res.status(404).json({ message: 'Recette non trouvée' });
+        }
+        res.json(recette);
+    } catch (erreur) {
+        res.status(500).json({ message: erreur.message });
+    }
+};
+
