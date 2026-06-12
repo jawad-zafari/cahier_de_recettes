@@ -169,4 +169,31 @@ paths:
           description: Accès refusé
         '404':
           description: Recette non trouvée
-  
+  /recettes/{id}/commentaires:
+    post:
+      summary: Ajouter un commentaire à une recette
+      tags:
+        - Commentaires
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: L'ID de la recette pour ajouter le commentaire
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                texte:
+                  type: string
+                auteur:
+                  type: string
+      responses:
+        '201':
+          description: Commentaire ajouté avec succès
+        '404':
+          description: Recette non trouvée
