@@ -54,4 +54,51 @@ paths:
           description: Connexion réussie (retourne le token)
         '400':
           description: Email ou mot de passe incorrect
+  /recettes:
+    get:
+      summary: Obtenir toutes les recettes
+      tags:
+        - Recettes
+      parameters:
+        - in: query
+          name: auteur
+          schema:
+            type: string
+          description: Filtrer les recettes par auteur
+        - in: query
+          name: ingredient
+          schema:
+            type: string
+          description: Filtrer les recettes par ingrédient
+      responses:
+        '200':
+          description: Liste des recettes récupérée avec succès
+    post:
+      summary: Ajouter une nouvelle recette
+      tags:
+        - Recettes
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                titre:
+                  type: string
+                ingredients:
+                  type: array
+                  items:
+                    type: string
+                etapes:
+                  type: string
+                auteur:
+                  type: string
+      responses:
+        '201':
+          description: Recette créée avec succès
+        '401':
+          description: Accès refusé (Token manquant ou invalide)
   
