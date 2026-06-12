@@ -149,4 +149,24 @@ paths:
           description: Accès refusé
         '404':
           description: Recette non trouvée
-   
+    delete:
+      summary: Supprimer une recette
+      tags:
+        - Recettes
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: L'ID de la recette à supprimer
+      responses:
+        '200':
+          description: Recette supprimée avec succès
+        '401':
+          description: Accès refusé
+        '404':
+          description: Recette non trouvée
+  
