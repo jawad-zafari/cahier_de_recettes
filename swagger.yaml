@@ -49,4 +49,9 @@ paths:
                   type: string
                 motDePasse:
                   type: string
-      
+      responses:
+        '200':
+          description: Connexion réussie (retourne le token)
+        '400':
+          description: Email ou mot de passe incorrect
+  
