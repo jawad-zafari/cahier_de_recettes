@@ -13,6 +13,10 @@ exports.inscription = async (req, res) => {
         if (utilisateurExistant) {
             return res.status(400).json({ message: 'Cet email est déjà utilisé.' });
         }
+        // Crypter le mot de passe
+        const salt = await bcrypt.genSalt(10);
+        const motDePasseCrypte = await bcrypt.hash(req.body.motDePasse, salt);
+
         } catch (erreur) {
     }
 };
