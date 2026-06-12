@@ -28,6 +28,7 @@ exports.inscription = async (req, res) => {
         await nouvelUtilisateur.save();
         res.status(201).json({ message: 'Utilisateur créé avec succès !' });
     } catch (erreur) {
+        res.status(500).json({ message: erreur.message });
     }
 };
 
