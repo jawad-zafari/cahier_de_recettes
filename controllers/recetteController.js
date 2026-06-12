@@ -43,3 +43,20 @@ exports.obtenirRecetteParId = async (req, res) => {
     }
 };
 
+// Modifier une recette existante
+exports.modifierRecette = async (req, res) => {
+    try {
+        const recetteMiseAJour = await Recette.findByIdAndUpdate(
+            req.params.id,
+            req.body,
+            { new: true } // Renvoie la nouvelle version de la recette
+        );
+        if (!recetteMiseAJour) {
+            return res.status(404).json({ message: 'Recette non trouvée' });
+        }
+        res.json(recetteMiseAJour);
+    } catch (erreur) {
+        res.status(400).json({ message: erreur.message });
+    }
+};
+
