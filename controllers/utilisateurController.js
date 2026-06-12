@@ -51,5 +51,6 @@ exports.connexion = async (req, res) => {
         const token = jwt.sign({ id: utilisateur._id }, CLE_SECRETE, { expiresIn: '1h' });
         res.json({ token: token, message: 'Connexion réussie !' });
     } catch (erreur) {
+        res.status(500).json({ message: erreur.message });
     }
 };
