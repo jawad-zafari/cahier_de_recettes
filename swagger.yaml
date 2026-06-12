@@ -33,4 +33,20 @@ paths:
           description: Utilisateur créé avec succès
         '400':
           description: Cet email est déjà utilisé ou informations invalides
-  
+  /utilisateurs/connexion:
+    post:
+      summary: Connexion de l'utilisateur
+      tags:
+        - Utilisateurs
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                motDePasse:
+                  type: string
+      
