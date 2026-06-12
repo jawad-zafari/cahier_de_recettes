@@ -60,3 +60,16 @@ exports.modifierRecette = async (req, res) => {
     }
 };
 
+// Supprimer une recette
+exports.supprimerRecette = async (req, res) => {
+    try {
+        const recetteSupprimee = await Recette.findByIdAndDelete(req.params.id);
+        if (!recetteSupprimee) {
+            return res.status(404).json({ message: 'Recette non trouvée' });
+        }
+        res.json({ message: 'Recette supprimée avec succès !' });
+    } catch (erreur) {
+        res.status(500).json({ message: erreur.message });
+    }
+};
+
