@@ -3,3 +3,9 @@ info:
   title: API Cahier de Recettes
   version: 1.0.0
   description: Documentation complète de l'API pour gérer les recettes de cuisine et les utilisateurs.
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
