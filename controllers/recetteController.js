@@ -73,3 +73,19 @@ exports.supprimerRecette = async (req, res) => {
     }
 };
 
+// Ajouter un commentaire à une recette
+exports.ajouterCommentaire = async (req, res) => {
+    try {
+        const recette = await Recette.findById(req.params.id);
+        if (!recette) {
+            return res.status(404).json({ message: 'Recette non trouvée' });
+        }
+        
+        // Ajouter le commentaire au tableau
+        recette.commentaires.push(req.body);
+        const recetteMiseAJour = await recette.save();
+        res.status(201).json(recetteMiseAJour);
+    } catch (erreur) {
+        res.status(400).json({ message: erreur.message });
+    }
+};
