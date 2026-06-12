@@ -24,7 +24,10 @@ exports.inscription = async (req, res) => {
             motDePasse: motDePasseCrypte
         });
 
-        } catch (erreur) {
+        // Sauvegarder dans la base de données
+        await nouvelUtilisateur.save();
+        res.status(201).json({ message: 'Utilisateur créé avec succès !' });
+    } catch (erreur) {
     }
 };
 
