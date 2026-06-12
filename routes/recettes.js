@@ -51,7 +51,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // Route pour modifier une recette
-router.patch('/:id', async (req, res) => {
+router.patch('/:id', auth, async (req, res) => {
     try {
         const recetteMiseAJour = await Recette.findByIdAndUpdate(
             req.params.id,
@@ -68,7 +68,7 @@ router.patch('/:id', async (req, res) => {
 });
 
 // Route pour supprimer une recette
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', auth, async (req, res) => {
     try {
         const recetteSupprimee = await Recette.findByIdAndDelete(req.params.id);
         if (!recetteSupprimee) {
