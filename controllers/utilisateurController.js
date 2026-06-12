@@ -17,6 +17,13 @@ exports.inscription = async (req, res) => {
         const salt = await bcrypt.genSalt(10);
         const motDePasseCrypte = await bcrypt.hash(req.body.motDePasse, salt);
 
+        // Créer le nouvel utilisateur
+        const nouvelUtilisateur = new Utilisateur({
+            nom: req.body.nom,
+            email: req.body.email,
+            motDePasse: motDePasseCrypte
+        });
+
         } catch (erreur) {
     }
 };
