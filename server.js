@@ -8,7 +8,8 @@ const YAML = require('yamljs');
 const utilisateursRoutes = require('./routes/utilisateurs');
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
+const HOST = process.env.IP || '0.0.0.0';
 
 // Lecture du fichier YAML pour la documentation Swagger
 const swaggerDocument = YAML.load('./swagger.yaml');
@@ -39,6 +40,8 @@ app.get('/', (req, res) => {
     res.send('Le serveur fonctionne parfaitement !');
 });
 
-app.listen(PORT, () => {
-    console.log('Serveur en écoute sur le port 3000');
+
+
+app.listen(PORT, HOST, () => {
+    console.log("Le serveur fonctionne !");
 });
