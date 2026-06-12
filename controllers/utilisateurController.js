@@ -47,6 +47,9 @@ exports.connexion = async (req, res) => {
             return res.status(400).json({ message: 'Email ou mot de passe incorrect.' });
         }
         
-        } catch (erreur) {
+        // Créer le token (clé numérique)
+        const token = jwt.sign({ id: utilisateur._id }, CLE_SECRETE, { expiresIn: '1h' });
+        res.json({ token: token, message: 'Connexion réussie !' });
+    } catch (erreur) {
     }
 };
