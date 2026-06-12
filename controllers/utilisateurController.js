@@ -41,6 +41,12 @@ exports.connexion = async (req, res) => {
             return res.status(400).json({ message: 'Email ou mot de passe incorrect.' });
         }
 
+        // Vérifier le mot de passe
+        const motDePasseValide = await bcrypt.compare(req.body.motDePasse, utilisateur.motDePasse);
+        if (!motDePasseValide) {
+            return res.status(400).json({ message: 'Email ou mot de passe incorrect.' });
+        }
+        
         } catch (erreur) {
     }
 };
