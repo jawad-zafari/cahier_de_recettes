@@ -101,4 +101,52 @@ paths:
           description: Recette créée avec succès
         '401':
           description: Accès refusé (Token manquant ou invalide)
-  
+  /recettes/{id}:
+    get:
+      summary: Obtenir une recette spécifique par son ID
+      tags:
+        - Recettes
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: L'ID de la recette
+      responses:
+        '200':
+          description: Recette trouvée et retournée
+        '404':
+          description: Recette non trouvée
+    patch:
+      summary: Modifier une recette existante
+      tags:
+        - Recettes
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: L'ID de la recette à modifier
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                titre:
+                  type: string
+                etapes:
+                  type: string
+      responses:
+        '200':
+          description: Recette mise à jour avec succès
+        '401':
+          description: Accès refusé
+        '404':
+          description: Recette non trouvée
+   
