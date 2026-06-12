@@ -2,16 +2,4 @@ openapi: 3.0.0
 info:
   title: API Cahier de Recettes
   version: 1.0.0
-  description: Documentation de l'API pour gérer les recettes de cuisine.
-paths:
-  /recettes:
-    get:
-      summary: Obtenir toutes les recettes
-      responses:
-        '200':
-          description: Opération réussie
-    post:
-      summary: Ajouter une nouvelle recette
-      responses:
-        '201':
-          description: Recette créée avec succès
+  description: Documentation complète de l'API pour gérer les recettes de cuisine et les utilisateurs.
